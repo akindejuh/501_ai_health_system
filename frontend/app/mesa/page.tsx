@@ -87,24 +87,6 @@ export default function MesaPage() {
 
       {/* Voice overlay (portal) */}
       <MesaVoiceOverlay />
-
-      {/* Footer */}
-      <footer className="mesa-footer">
-        <div className="mesa-footer-content">
-          <p className="mesa-footer-disclaimer">
-            ⚠️ MESA provides informational guidance only. Always consult qualified
-            healthcare professionals for medical advice, diagnosis, or treatment.
-          </p>
-          <div className="mesa-footer-links">
-            <span className="mesa-footer-version">v1.0.0</span>
-            <span className="mesa-footer-separator">•</span>
-            <span className="mesa-footer-status">
-              <span className="mesa-footer-status-dot" />
-              System Operational
-            </span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

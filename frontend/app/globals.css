@@ -947,6 +947,354 @@ body {
   text-align: center;
 }
 
+/* Chat Toolbar */
+.mesa-chat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--mesa-bg-tertiary);
+  border-bottom: 1px solid var(--mesa-border);
+}
+
+.mesa-chat-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mesa-chat-message-count {
+  font-size: 0.8rem;
+  color: var(--mesa-text-muted);
+}
+
+.mesa-chat-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mesa-chat-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: var(--mesa-bg-secondary);
+  border: 1px solid var(--mesa-border);
+  border-radius: var(--mesa-radius-md);
+  color: var(--mesa-text-secondary);
+  cursor: pointer;
+  transition: all var(--mesa-transition-fast);
+}
+
+.mesa-chat-expand-btn:hover {
+  background: var(--mesa-surface-hover);
+  color: var(--mesa-text-primary);
+  border-color: var(--mesa-accent-primary);
+}
+
+.mesa-chat-expand-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Fullscreen Expanded Chat */
+.mesa-chat-expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: unset;
+  max-height: unset;
+  z-index: 99999;
+  border-radius: 0;
+  margin: 0;
+  border: none;
+  background: var(--mesa-bg-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.mesa-chat-expanded .mesa-chat-messages {
+  flex: 1;
+  height: auto;
+}
+
+.mesa-chat-expanded .mesa-chat-toolbar {
+  background: var(--mesa-bg-secondary);
+  border-bottom: 1px solid var(--mesa-border);
+}
+
+/* Message Controls */
+.mesa-chat-message-controls {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity var(--mesa-transition-fast);
+}
+
+.mesa-chat-message:hover .mesa-chat-message-controls {
+  opacity: 1;
+}
+
+.mesa-chat-control-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--mesa-radius-sm);
+  color: var(--mesa-text-muted);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all var(--mesa-transition-fast);
+}
+
+.mesa-chat-control-btn:hover {
+  background: var(--mesa-bg-tertiary);
+  border-color: var(--mesa-border);
+  color: var(--mesa-text-primary);
+}
+
+.mesa-chat-control-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Edit Mode */
+.mesa-chat-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mesa-chat-edit-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--mesa-bg-tertiary);
+  border: 1px solid var(--mesa-accent-primary);
+  border-radius: var(--mesa-radius-md);
+  color: var(--mesa-text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+}
+
+.mesa-chat-edit-input:focus {
+  box-shadow: 0 0 0 3px var(--mesa-accent-glow);
+}
+
+.mesa-chat-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mesa-chat-edit-cancel,
+.mesa-chat-edit-save {
+  padding: 6px 12px;
+  border-radius: var(--mesa-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--mesa-transition-fast);
+}
+
+.mesa-chat-edit-cancel {
+  background: transparent;
+  border: 1px solid var(--mesa-border);
+  color: var(--mesa-text-secondary);
+}
+
+.mesa-chat-edit-cancel:hover {
+  background: var(--mesa-surface-hover);
+  color: var(--mesa-text-primary);
+}
+
+.mesa-chat-edit-save {
+  background: var(--mesa-accent-primary);
+  border: none;
+  color: var(--mesa-bg-primary);
+}
+
+.mesa-chat-edit-save:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--mesa-shadow-glow);
+}
+
+/* ============================================================================
+   Markdown Styles
+   ============================================================================ */
+
+.mesa-chat-message-text h1,
+.mesa-chat-message-text h2,
+.mesa-chat-message-text h3,
+.mesa-chat-message-text h4,
+.mesa-chat-message-text h5,
+.mesa-chat-message-text h6 {
+  margin: 16px 0 8px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--mesa-text-primary);
+}
+
+.mesa-chat-message-text h1:first-child,
+.mesa-chat-message-text h2:first-child,
+.mesa-chat-message-text h3:first-child {
+  margin-top: 0;
+}
+
+.mesa-chat-message-text h1 { font-size: 1.4rem; }
+.mesa-chat-message-text h2 { font-size: 1.2rem; }
+.mesa-chat-message-text h3 { font-size: 1.1rem; }
+.mesa-chat-message-text h4 { font-size: 1rem; }
+
+.mesa-chat-message-text p {
+  margin: 8px 0;
+}
+
+.mesa-chat-message-text p:first-child {
+  margin-top: 0;
+}
+
+.mesa-chat-message-text p:last-child {
+  margin-bottom: 0;
+}
+
+.mesa-chat-message-text ul,
+.mesa-chat-message-text ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.mesa-chat-message-text li {
+  margin: 4px 0;
+}
+
+.mesa-chat-message-text li > ul,
+.mesa-chat-message-text li > ol {
+  margin: 4px 0;
+}
+
+.mesa-chat-message-text strong {
+  font-weight: 600;
+  color: var(--mesa-text-primary);
+}
+
+.mesa-chat-message-text em {
+  font-style: italic;
+}
+
+.mesa-chat-message-text blockquote {
+  margin: 12px 0;
+  padding: 8px 16px;
+  border-left: 3px solid var(--mesa-accent-primary);
+  background: var(--mesa-bg-primary);
+  border-radius: 0 var(--mesa-radius-sm) var(--mesa-radius-sm) 0;
+  color: var(--mesa-text-secondary);
+}
+
+.mesa-chat-message-text hr {
+  margin: 16px 0;
+  border: none;
+  border-top: 1px solid var(--mesa-border);
+}
+
+/* Inline Code */
+.mesa-inline-code {
+  padding: 2px 6px;
+  background: var(--mesa-bg-primary);
+  border: 1px solid var(--mesa-border);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  font-size: 0.85em;
+  color: var(--mesa-accent-primary);
+}
+
+/* Code Blocks */
+.mesa-code-block {
+  margin: 12px 0;
+  border-radius: var(--mesa-radius-md);
+  overflow: hidden;
+  background: var(--mesa-bg-primary);
+  border: 1px solid var(--mesa-border);
+}
+
+.mesa-code-header {
+  padding: 8px 12px;
+  background: var(--mesa-bg-secondary);
+  border-bottom: 1px solid var(--mesa-border);
+  font-size: 0.75rem;
+  color: var(--mesa-text-muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.mesa-code-block pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.mesa-code-block code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--mesa-text-primary);
+}
+
+/* Tables */
+.mesa-table-wrapper {
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+.mesa-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.mesa-table-wrapper th,
+.mesa-table-wrapper td {
+  padding: 10px 12px;
+  border: 1px solid var(--mesa-border);
+  text-align: left;
+}
+
+.mesa-table-wrapper th {
+  background: var(--mesa-bg-secondary);
+  font-weight: 600;
+  color: var(--mesa-text-primary);
+}
+
+.mesa-table-wrapper tr:nth-child(even) td {
+  background: var(--mesa-bg-primary);
+}
+
+/* Links */
+.mesa-link {
+  color: var(--mesa-accent-primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--mesa-accent-primary);
+  transition: all var(--mesa-transition-fast);
+}
+
+.mesa-link:hover {
+  border-bottom-style: solid;
+  text-shadow: 0 0 8px var(--mesa-accent-glow);
+}
+
 /* ============================================================================
    Expert System Interface
    ============================================================================ */

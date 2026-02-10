@@ -467,16 +467,16 @@ function DiagnosisResults() {
         >
           <span className="mesa-dehydration-result-label">Dehydration Level:</span>
           <span className="mesa-dehydration-result-value">
-            {diagnosisResult.dehydration_level.toUpperCase()}
+            {diagnosisResult.dehydration_level?.toUpperCase() ?? "N/A"}
           </span>
           <span className="mesa-treatment-plan">
-            WHO Treatment Plan {diagnosisResult.treatment_plan}
+            WHO Treatment Plan {diagnosisResult.treatment_plan ?? "N/A"}
           </span>
         </div>
       )}
 
       {/* Recommendations */}
-      {diagnosisResult.recommendations.length > 0 && (
+      {(diagnosisResult.recommendations?.length ?? 0) > 0 && (
         <div className="mesa-recommendations">
           <h4 className="mesa-recommendations-title">Recommendations</h4>
           <ul className="mesa-recommendations-list">

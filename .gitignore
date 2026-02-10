@@ -159,3 +159,6 @@ __pypackages__/
 # Docker
 # ===========================
 docker-compose.override.yml
+
+
+frontend/.next
